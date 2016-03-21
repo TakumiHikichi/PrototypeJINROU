@@ -1,0 +1,34 @@
+<resources>
+    <string name="ok">OK</string>
+    <string name="wolf">人狼</string>
+    <string name="villedger">村人</string>
+    <string name="fourtune_tell">占い師</string>
+    <string name="madman">狂人</string>
+    <string name="app_name">JINROU2</string>
+    <string name="start_game">ゲーム開始</string>
+    <string name="read_rule">ルール説明</string>
+    <string name="setting">設定</string>
+    <string name="action_settings">設定</string>
+    <string name="make_player">参加者追加</string>
+    <string name="next_page">次へ</string>
+    <string name="large_plus">＋</string>
+    <string name="large_minus">－</string>
+
+    <string name="set_foru_mem">4人用</string>
+    <string name="set_five_mem">5人用</string>
+    <string name="set_six_mem">6人用</string>
+    <string name="set_seven_mem">7人用</string>
+    <string name="set_eight_mem">8人用</string>
+    <string name="set_nine_mem">9人用</string>
+    <string name="set_ten_mem">10人用</string>
+    <string name="set_eleven_mem">11人用</string>
+    <string name="set_twelbe_mem">12人用</string>
+    <string name="set_thirteen_mem">13人用</string>
+    <string name="set_fourteen_mem">14人用</string>
+    <string name="set_fifteen_mem">15人用</string>
+    <string name="set_sixteen_mem">16人用</string>
+
+    <string name="check_chara_start">役職確認開始</string>
+    <string name="goto_next_game">次のゲームへ</string>
+    <string name="check_character">役職の確認を行います。画面に従って端末を受け渡してください</string>
+</resources>

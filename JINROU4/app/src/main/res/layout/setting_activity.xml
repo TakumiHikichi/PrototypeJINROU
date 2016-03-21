@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--全体：白色-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/LinearLayout1"
+    android:background="#ffffff">
+    <!--全体上下分割・上：薄黄色-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="90"
+        android:id="@+id/header"
+        android:background="#ffff66">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/EnterButton"
+            android:text="保存"/>
+    </LinearLayout>
+    <!--全体上下分割・上：薄黄色-->
+
+    <!--全体上下分割・下：色不要-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:id="@+id/LinearLayout1_2"
+        android:background="#000000">
+        <!--左スクロール部：黄色-->
+        <ScrollView
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <!--左スクロール部：黄色-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/LinearLayout1_2_Left"
+                android:background="#ffff00">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/mem_spinner" />
+
+            </LinearLayout>
+            <!--左スクロール部：黄色-->
+        </ScrollView>
+        <!--左スクロール部：黄色-->
+        <!--右内容部：緑色-->
+<!--        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/LinearLayout1_2_Right"
+                android:background="#00ff00">
+            </LinearLayout>
+<!--        </ScrollView>   -->
+        <!--右内容部：緑色-->
+    </LinearLayout>
+    <!--全体上下分割・下：色不要-->
+</LinearLayout>
+<!--全体：白色-->
