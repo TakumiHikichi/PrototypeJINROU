@@ -39,6 +39,10 @@ public abstract class GameBaseActivity extends Act001PlayBGM implements View.OnC
         layout.removeAllViews();
         GameData gd = GameData.getInstance();
 
+        Intent intent = getIntent();
+        //インテントからゲームデータ取得
+        gd = (GameData)GameData.getInstance();
+
         //プレイヤーデータバッファ
         PlayerData pdBuf = new PlayerData();
         if(gd!=null){

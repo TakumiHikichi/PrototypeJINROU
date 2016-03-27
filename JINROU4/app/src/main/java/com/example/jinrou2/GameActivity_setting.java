@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -32,32 +33,34 @@ public class GameActivity_setting extends Act001PlayBGM implements View.OnClickL
     Button btn2;
     RelativeLayout layout;
     GameData gd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         startMusic(R.raw.gasetting);
         setContentView(R.layout.game_settint_field);
-        Intent intent = getIntent();
-        //インテントからゲームデータ取得
-        gd = (GameData) intent.getSerializableExtra(MyConstants.INTENT_KEY);
-        if(gd==null)gd=GameData.getInstance();
         //プレイヤーデータバッファ
-        PlayerData pdBuf = new PlayerData();
         layout = (RelativeLayout)findViewById(R.id.game_field);
         btn1=(Button)findViewById(R.id.button1);
         btn2=(Button)findViewById(R.id.button2);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
-        //院展とから情報を受け取った場合、それを元にプレイヤーボタンを表示
-/*        if(gd!=null){
+        //ゲームデータ取得
+        gd = GameData.getInstance();
+        //プレイヤー情報が存在する場合
+        if(gd.getPlayerDatas()!=null){
+            ImgTextButton_setting itb_s[]=new ImgTextButton_setting[gd.getPlayerDatas().size()];
             for(int i=0;i<gd.getPlayerDatas().size();i++){
-                pdBuf=gd.getPlayerDatas().get(i);
-                PlayerGameButton pb = new PlayerGameButton(pdBuf.getName(),(RelativeLayout)findViewById(R.id.game_field),this);
-                pb.setX(pdBuf.getButtonLeft());
-                pb.setY(pdBuf.getButtonTop());
-                layout.addView(pb);
+                itb_s[i]=new ImgTextButton_setting(gd.getPlayerDatas().get(i).getName(),layout,this,gd.getIconHeight(),gd.getIconHeight());
+Log.d("ボタンに入れる値X",""+gd.getPlayerDatas().get(i).getButtonLeft());
+                itb_s[i].setX(gd.getPlayerDatas().get(i).getButtonLeft());
+Log.d("ボタンに入れた値X", "" + itb_s[i].getX());
+                itb_s[i].setY(gd.getPlayerDatas().get(i).getButtonTop());
+                layout.addView(itb_s[i]);
             }
-        }*/
+        }else{
+            gd=GameData.getInstance();
+        }
     }
 
     @Override
@@ -113,8 +116,10 @@ public class GameActivity_setting extends Act001PlayBGM implements View.OnClickL
                     psBtn=(ImgTextButton_setting) layout.getChildAt(i);
                     //ボタンの情報からプレイヤーデータを作成
                     pdBuf.setName(psBtn.getText());
-                    pdBuf.setButtonLeft(psBtn.getLeft());
-                    pdBuf.setButtonTop(psBtn.getTop());
+//ボタンの情報
+Log.d("ボタン"+i,"TOP「"+psBtn.getTop()+"」");
+                    pdBuf.setButtonLeft(psBtn.getX());
+                    pdBuf.setButtonTop( psBtn.getY());
                     pdBuf.setButtonId(psBtn.getId());
                     pdBuf.setLivingFlug(true);
                     //ここから配役
@@ -130,7 +135,7 @@ public class GameActivity_setting extends Act001PlayBGM implements View.OnClickL
                 gd.setIconWidth(((RelativeLayout) findViewById(R.id.game_field)).getWidth() / 4);
                 gd.setIconHeight(((RelativeLayout) findViewById(R.id.game_field)).getHeight() / 4);
                 Intent intent = new Intent(GameActivity_setting.this, GameActivity_confirm.class);
-                intent.putExtra(MyConstants.INTENT_KEY, gd);
+                intent.putExtra(MyConstants.INTENT_KEY, GameData.getInstance());
                 startActivity(intent);
                 break;
             default:
