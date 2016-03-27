@@ -1,5 +1,7 @@
 package com.example.jinrou2.Data;
 
+import android.util.Log;
+
 import com.example.CharaEnum;
 
 import java.io.Serializable;
@@ -11,8 +13,8 @@ public class PlayerData implements Serializable{
     private String name;
     private int buttonId;
     private int iconId;
-    private int buttonLeft;
-    private int buttonTop;
+    private float buttonLeft;
+    private float buttonTop;
     private CharaEnum chara;
     private boolean livingFlug;
 
@@ -22,16 +24,16 @@ public class PlayerData implements Serializable{
     public void setIconId(int iconId) {
         this.iconId = iconId;
     }
-    public int getButtonLeft() {
+    public float getButtonLeft() {
         return buttonLeft;
     }
-    public void setButtonLeft(int buttonLeft) {
+    public void setButtonLeft(float buttonLeft) {
         this.buttonLeft = buttonLeft;
     }
-    public int getButtonTop() {
+    public float getButtonTop() {
         return buttonTop;
     }
-    public void setButtonTop(int buttonTop) {
+    public void setButtonTop(float buttonTop) {
         this.buttonTop = buttonTop;
     }
     public CharaEnum getChara() {

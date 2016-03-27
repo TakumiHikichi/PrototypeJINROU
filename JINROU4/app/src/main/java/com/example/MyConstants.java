@@ -24,7 +24,6 @@ public class MyConstants {
     public static final String PREFERENCE_NO_DATA="NOTHING";
 
     public static final String BTN_OK = "OK";
-    public static final String BTN_CHANGE = "変更";
     public static final String BTN_DELETE="削除";
     public static final String BTN_CANCEL = "CANCEL";
     public static final String DIALOG_TITLE_MAKE_PLAYER="参加者名を入力してください";
@@ -62,4 +61,5 @@ public class MyConstants {
     //勝利画面表示用
     public static final String WIN ="【勝利】";
     public static final String LOSE ="【敗北】";
+    public static final String CONFIRM_NEXT_GAME="次のゲームへ進みます";
 }

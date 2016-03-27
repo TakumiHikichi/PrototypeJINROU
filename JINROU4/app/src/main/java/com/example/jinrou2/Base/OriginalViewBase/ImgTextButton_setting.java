@@ -73,6 +73,41 @@ public class ImgTextButton_setting extends MovingLinearLayout implements View.On
         this.addView(bottomText);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public ImgTextButton_setting(String playerName, final RelativeLayout parentLayout, final Activity act,int layoutHeight,int layoutWidth){
+        super(act.getApplicationContext(),parentLayout);
+        this.act=act;
+        this.playerName=playerName;
+        this.parentLayout=parentLayout;
+        thisView=this;
+
+        //IDの自動設定
+        this.setId(parentLayout.generateViewId());
+        this.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams mainLp = new LinearLayout.LayoutParams(layoutWidth,layoutHeight);
+        //パラメータ設定
+        this.setLayoutParams(mainLp);
+
+        //各レイアウトのパラメータ
+        LinearLayout.LayoutParams imageLp=new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,0,80);
+        LinearLayout.LayoutParams textLp=new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,0,20);
+
+        ImageView topImage = new ImageView(act.getApplicationContext());
+        final AutoFontTextArea bottomText = new AutoFontTextArea(act.getApplicationContext());
+
+        //イメージの定義
+        topImage.setLayoutParams(imageLp);
+        topImage.setImageResource(R.drawable.button_player);
+        this.addView(topImage);
+        //下部テキスト定義
+        bottomText.setText(playerName);
+        bottomText.setTextColor(Color.RED);
+        bottomText.setGravity(Gravity.CENTER);
+        bottomText.setLayoutParams(textLp);
+        this.bottomText=bottomText;
+        this.addView(bottomText);
+    }
+
     @Override
     protected void touchAction() {
         final NameEditText editView = new NameEditText(act.getApplicationContext());

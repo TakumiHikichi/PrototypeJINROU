@@ -2,11 +2,17 @@ package com.example.jinrou2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.MyConstants;
 import com.example.jinrou2.Base.ActivityBase.Lib.Act001PlayBGM;
+import com.example.jinrou2.Data.GameData;
+import com.example.jinrou2.Data.PlayerData;
 import com.example.jinrou2.Lib.ToSpeech;
+
+import java.util.ArrayList;
 
 public class FirstActivity extends Act001PlayBGM implements View.OnClickListener {
     ToSpeech tts;
@@ -23,6 +29,24 @@ public class FirstActivity extends Act001PlayBGM implements View.OnClickListener
         c.setOnClickListener(this);
         Button d = (Button)findViewById(R.id.setting);
         d.setOnClickListener(this);
+
+        //☆☆☆☆☆☆☆☆☆☆☆テスト用☆☆☆☆☆☆☆☆☆☆☆
+        //初期のプレイヤーを作っておく
+        GameData gd = GameData.getInstance();
+        gd.setIconHeight(361);
+        gd.setIconWidth(246);
+        ArrayList<PlayerData> pdList = new ArrayList();
+        PlayerData pd[]=new PlayerData[5];
+        //☆☆☆☆☆☆☆☆☆☆☆テスト用☆☆☆☆☆☆☆☆☆☆☆
+        for(int i=0;i<5;i++){
+            pd[i]=new PlayerData();
+            pd[i].setButtonLeft(i*100);
+            pd[i].setButtonTop(i * 200);
+            pd[i].setName("TEST_" + i);
+            pdList.add(pd[i]);
+        }
+        gd.setPlayerDatas(pdList);
+        //☆☆☆☆☆☆☆☆☆☆☆テスト用☆☆☆☆☆☆☆☆☆☆☆
     }
 
     @Override

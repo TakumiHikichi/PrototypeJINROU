@@ -49,8 +49,7 @@ public class GameActivity_confirm extends Act001PlayBGM implements View.OnClickL
         startMusic(R.raw.gaconfirm);
         setContentView(R.layout.game_activity_confirm);
         //ゲームデータの受け取り
-        Intent intent = getIntent();
-        gd = (GameData)intent.getSerializableExtra(MyConstants.INTENT_KEY);
+        gd=GameData.getInstance();
 
         //ヘッダ部にタイトル挿入
         LinearLayout llHeader = (LinearLayout)findViewById(R.id.header);
@@ -240,7 +239,7 @@ public class GameActivity_confirm extends Act001PlayBGM implements View.OnClickL
             gd.setStartFlug(true);
             //人数分の確認が終わった場合、ゲームメインへ遷移
             Intent intent = new Intent(GameActivity_confirm.this, GameActivity_main.class);
-            intent.putExtra(MyConstants.INTENT_KEY, gd);
+            intent.putExtra(MyConstants.INTENT_KEY, GameData.getInstance());
             startActivity(intent);
         }
     }

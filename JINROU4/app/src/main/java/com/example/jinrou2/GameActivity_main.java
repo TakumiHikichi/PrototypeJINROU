@@ -214,24 +214,6 @@ public class GameActivity_main extends GameBaseActivity implements View.OnClickL
                     });
                     endSpeechThread.setName("END_SPEECH");
                     endSpeechThread.start();
-                    /*
-                    //終了用メッセージの読み上げが終わり次第次のアクション開始メッセージを読み上げるスレッド
-                    final Thread startSpeechThread = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                //終了メッセージ読み上げ待ち
-                                endSpeechThread.join();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            //次のアクション開始メッセージ読み上げ
-                            ts.speech(startSpeechList);
-                        }
-                    });
-                    startSpeechThread.setName("START_SPEECH");
-                    startSpeechThread.start();
-                    */
                     //別スレッドから画面切り替える用ハンドラー
                     final Handler handler=new Handler();
                     //終了用メッセージの読み上げが終わり次第画面を切り替える用スレッド
@@ -280,7 +262,7 @@ public class GameActivity_main extends GameBaseActivity implements View.OnClickL
                         ts.speech(winnerCamp.getVictorySpeech());
                         //勝敗表示画面へ遷移
                         Intent intent = new Intent(GameActivity_main.this, GameActivity_end.class);
-                        //intent.putExtra(MyConstants.INTENT_KEY, gd);
+                        intent.putExtra(MyConstants.INTENT_KEY, GameData.getInstance());
                         startActivity(intent);
                     }
                 }

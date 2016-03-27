@@ -1,9 +1,13 @@
 package com.example.jinrou2;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.CampEnum;
@@ -15,18 +19,18 @@ import com.example.jinrou2.Data.DataHelper.GameDataHelper;
 import com.example.jinrou2.Data.GameData;
 import com.example.jinrou2.Data.PlayerData;
 import com.example.jinrou2.Data.SettingData;
+import com.example.jinrou2.Lib.MakePosiNegaDialog;
 
 import java.util.ArrayList;
 
 /**
  * Created by ryouta on 2016/03/05.
  */
-public class GameActivity_end extends Act001PlayBGM implements View.OnClickListener{
+public class GameActivity_end extends Act001PlayBGM implements View.OnClickListener, Dialog.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //参加者
         int members=0;
         //参加者カウント用
@@ -35,7 +39,10 @@ public class GameActivity_end extends Act001PlayBGM implements View.OnClickListe
         //音声再生
         startMusic(R.raw.gaconfirm);
         //画面生成
-        setContentView(R.layout.game_activity_confirm);
+        setContentView(R.layout.game_activity_end);
+        //画面下部のボタン作成
+        Button nextGameButton = (Button)findViewById(R.id.nextButton);
+        nextGameButton.setOnClickListener(this);
         //データ
         GameData gd = GameData.getInstance();
         GameDataHelper gdh = new GameDataHelper();
@@ -124,5 +131,32 @@ public class GameActivity_end extends Act001PlayBGM implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        //YES NOが存在するダイアログを生成
+        MakePosiNegaDialog dialog = new MakePosiNegaDialog(this);
+        //アクションを実施する場合、確認ダイアログを表示
+        dialog.setHeader(MyConstants.CHECK);
+        dialog.setPositiveButtonText(MyConstants.BTN_OK);
+        dialog.setNegativeButtonText(MyConstants.BTN_CANCEL);
+        dialog.setBody(MyConstants.CONFIRM_NEXT_GAME);
+        //ダイアログを表示
+        dialog.showDialog(this);
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        //ダイアログで押されたボタンがPOSITIVEかNEGATIVEか
+        switch(which) {
+            //POSITIVEボタンの場合
+            case DialogInterface.BUTTON_POSITIVE:
+                //勝敗表示画面へ遷移
+                Intent intent = new Intent(GameActivity_end.this, GameActivity_setting.class);
+                intent.putExtra(MyConstants.INTENT_KEY, GameData.getInstance());
+                startActivity(intent);
+                break;
+            case DialogInterface.BUTTON_NEGATIVE:
+                break;
+            default:
+                break;
+        }
     }
 }
