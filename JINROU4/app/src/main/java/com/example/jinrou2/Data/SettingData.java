@@ -59,7 +59,7 @@ public class SettingData {
             case 7:
                 return "WOLF,WOLF,FORTUNE_TELLER,VILLAGER,VILLAGER,VILLAGER,VILLAGER";
             case 8:
-                return "WOLF,WOLF,FORTUNE_TELLER,MAD_MAN,VILLAGER,VILLAGER,VILLAGER,VILLAGER";
+                return "WOLF,WOLF,WOLF,FORTUNE_TELLER,MAD_MAN,VILLAGER,VILLAGER,VILLAGER";
             case 9:
                 return "WOLF,WOLF,FORTUNE_TELLER,MAD_MAN,VILLAGER,VILLAGER,VILLAGER,VILLAGER,VILLAGER";
             case 10:
